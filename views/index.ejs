@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="blinking-title">#$*@&$!&@*@!</title>
+    
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <video class="vidoverlay" autoplay loop muted src="/video.mp4"></video>
+
+<body>
+
+    <div class="view-counter">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+            <circle cx="12" cy="12" r="3" />
+        </svg>
+        <span><%- infos.views %></span>
+    </div>
+
+    <div class="all">
+        <% users.forEach(user => { %>
+            <div class="profile-container">
+                <div class="discord-profile">
+                    <div class="profile animate__animated animate__fadeInUp animate__fast profile-card">
+                        <div class="pfp avatar-wrapper">
+                            <img class="avatar-img" src="<%= 
+                                user.user && user.user.avatar ?
+                                  `https://cdn.discordapp.com/avatars/${user.user.id}/${user.user.avatar}.webp?size=4096` :
+                                  'https://cdn.discordapp.com/embed/avatars/0.png'
+                            %>" alt="avatar" />
+                            <% const st = (user.status || 'offline').toLowerCase(); %>
+                            <span class="status-badge <%= st %>"></span>
+                        </div>
+
+                        <div class="nick"><%= user.user.global_name || user.user.username %></div>
+                        <div class="subnick">@<%= user.user.username %></div>
+
+                        <div class="badges small-badges">
+                            <% if (Array.isArray(user.badges) && user.badges.length) { %>
+                                <% user.badges.forEach(badge => { %>
+                                    <div class="badge" style="background-image: url('https://cdn.discordapp.com/badge-icons/<%= badge.icon %>.png');" data-tooltip="<%= badge.description %>"></div>
+                                <% }); %>
+                            <% } %>
+                        </div>
+
+                        <div class="social-buttons centered">
+                            <% if (Array.isArray(user.connected_accounts) && user.connected_accounts.length) { %>
+                                <% user.connected_accounts.forEach(connection => { %>
+                                    <% const t = connection.type; %>
+                                        <% if (t === 'twitter') { %>
+                                            <div class="social-button" onclick="window.open('https://twitter.com/<%= connection.name %>','_blank')">
+                                                <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/refs/heads/master/SVG/Black/Twitter_black.svg">
+                                            </div>
+                                        <% } else if (t === 'twitch') { %>
+                                            <div class="social-button" onclick="window.open('https://www.twitch.tv/<%= connection.name %>','_blank')">
+                                                <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/refs/heads/master/SVG/Black/Twitch_black.svg">
+                                            </div>
+                                        <% } else if (t === 'youtube') { %>
+                                            <div class="social-button" onclick="window.open('https://youtube.com/channels/<%= connection.id %>','_blank')">
+                                                <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/refs/heads/master/SVG/Black/Youtube_black.svg">
+                                            </div>
+                                        <% } else if (t === 'tiktok') { %>
+                                            <div class="social-button" onclick="window.open('https://www.tiktok.com/@<%= connection.name %>','_blank')">
+                                                <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/refs/heads/master/SVG/Black/Tik%20Tok_black.svg">
+                                            </div>
+                                        <% } %>
+                                <% }); %>
+                            <% } %>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+
+        <input type="checkbox" autocomplete="off" id="overlay-toggle">
+        <div class="overlay fullscreen" onclick="toggleFullScreen();">
+            <label for="overlay-toggle" onclick="playAudio();">
+                <span class="overlayhover hover" style="font-family: monospace; font-size: 0.6em;">
+                 Ein Volk, ein Reich, ein Führer 卐
+                </span>
+            </label>
+        </div>
+
+        <audio loop preload="auto" id="audio">
+            <source src="/vx.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        function playAudio() {
+            const audio = document.getElementById("audio");
+            audio.volume = 1.0;
+            audio.currentTime = 0;
+            audio.play();
+        }
+
+        function toggleFullScreen() {
+            const elem = document.documentElement;
+            if (elem.requestFullscreen) elem.requestFullscreen();
+        }
+    </script>
+
+    <!-- 🔥 TILT 3D VIOLENTO + MOVIMENTO EM TODOS OS LADOS -->
+    <script>
+    document.querySelectorAll('.profile-card').forEach(card => {
+        const maxTilt = 22;
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const rotateY = ((x - rect.width/2) / (rect.width/2)) * maxTilt;
+            const rotateX = -((y - rect.height/2) / (rect.height/2)) * maxTilt;
+
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.07)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+        });
+    });
+    </script>
+
+</body>
+
+</html>

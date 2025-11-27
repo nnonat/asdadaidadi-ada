@@ -1,0 +1,532 @@
+@import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0b0b0c;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  position: relative;
+  color: #e6edf3;
+}
+
+.all {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.discord-profile {
+  text-align: center;
+  padding: 0;
+  border-radius: 12px;
+  color: #ffffff;
+  position: relative;
+  width: 100%;
+  margin: 15px;
+  background: transparent;
+}
+
+.profile-badges {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 15px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.profile-badges img {
+  width: 2rem;
+  height: auto;
+  cursor: wait;
+}
+
+.connection-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+}
+
+.connection-row img {
+  width: 26px;
+  height: 26px;
+}
+
+.connection-name {
+  color: #ddd;
+  font-size: 0.95rem;
+}
+
+.connection-row.empty {
+  color: #aaa;
+  font-size: 0.9rem;
+  padding: 8px;
+}
+
+.status-card {
+  display: fixed;
+  align-items: center;
+  gap: 10px;
+  margin: 12px auto 6px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.35);
+  width: calc(100% - 40px);
+  max-width: 260px;
+  justify-content: center;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 6px rgba(0,0,0,0.6);
+}
+
+.status-text { color: #e6e6e6; font-size: 0.95rem; text-transform: capitalize; }
+
+.spotify-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px auto 18px;
+  padding: 8px 12px;
+  width: calc(100% - 40px);
+  max-width: 300px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(30,215,96,0.12), rgba(255,255,255,0.02));
+}
+
+.spotify-album { width: 56px; height: 56px; object-fit: cover; border-radius: 6px; }
+.spotify-info { display:flex; flex-direction:column; }
+.spotify-track { font-weight: 700; color: #fff; font-size: 0.95rem; }
+.spotify-artist { color: #cfcfcf; font-size: 0.85rem; }
+.spotify-open { margin-left: auto; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.08); padding:6px 8px; border-radius:6px; cursor:pointer; }
+
+.badges { margin-top: 8px; }
+
+.profile-cover {
+  width: 100%;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px 12px 0 0;
+  z-index: 0;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: -50px auto 20px;
+  border-radius: 50%;
+  border: 7px solid #202124;
+  transition: transform 0.4s ease;
+  z-index: 1;
+}
+
+.avatar:hover {
+  transform: scale(1.1);
+}
+
+.pfp {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pfp img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pfp img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+.nick {
+  font-family: "Arial", sans-serif;
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.nickr {
+  font-family: "Yanone Kaffeesatz", sans-serif;
+  font-size: clamp(22px, 4vw, 29px);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subnick {
+  font-family: "Arial", sans-serif;
+  font-size: clamp(14px, 3vw, 16px);
+  opacity: 0.7;
+  margin: 15px 0;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.badge {
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+  border-radius: 50%;
+  position: relative;
+}
+
+.badge[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  background-color: #444;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.badge[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
+.social-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.social-button {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.social-button:hover {
+  background-color: red;
+}
+
+.social-icon {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.server-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
+  margin: 20px 0;
+}
+
+.server-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.server-button-text {
+  font-size: clamp(16px, 3vw, 18px);
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .all {
+    padding: 10px;
+    position: static;
+    transform: none;
+    min-height: 100vh;
+  }
+
+  .discord-profile {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .social-buttons {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .discord-profile {
+    margin: 5px;
+    padding: 10px;
+  }
+
+  .pfp img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .badges {
+    gap: 5px;
+  }
+}
+
+audio {
+  width: 100%;
+  max-width: 300px;
+  margin: 10px auto;
+  background: transparent;
+  border: none;
+}
+
+.discord-profilee {
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  min-height: 350px;
+  margin: 15px;
+  background-color: #000000;
+}
+
+.userss {
+  font-size: clamp(16px, 3vw, 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: beige;
+  margin: 10px 0;
+}
+
+.view-counter {
+  position: fixed;
+  inset: 10px auto auto 10px;
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", monospace;
+  font-size: 1rem;
+  color: #fff;
+  background-color: rgb(66 66 66 / 0.62);
+  padding: 0.625rem;
+  border-radius: 0.375rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  backdrop-filter: blur(4px);
+}
+
+/* New styles for profile card similar to the provided mockup */
+.profile-card {
+  width: 300px; /* fixed width as requested */
+  height: 420px; /* fixed height for consistent card size */
+  padding: 32px; /* p-8 */
+  border-radius: 20px; /* rounded-2xl */
+  background: linear-gradient(180deg, rgba(20, 20, 22, 0), rgba(8, 8, 10, 0));
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.059);
+  margin: 12px auto;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-sizing: border-box;
+  overflow: hidden; /* keep content inside fixed card */
+}
+
+.avatar-wrapper { position: relative; display: flex; justify-content: center; }
+.avatar-img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 4px solid rgba(0, 0, 0, 0); }
+
+
+.small-badges { margin-top: 14px; display:flex; gap:10px; justify-content:center; }
+.small-badges .badge { width: 28px; height: 28px; }
+
+.social-buttons.centered { margin: 18px auto; gap: 14px; }
+.social-button { width: 48px; height: 48px; background: rgba(255,255,255,0.02); border-radius: 12px; display:flex; align-items:center; justify-content:center; transition: transform .18s ease, background .14s ease; }
+.social-button img { width: 22px; height: 22px; filter: invert(1) brightness(2); }
+.social-button:hover { transform: scale(1.08); background: rgba(255,255,255,0.04); }
+.social-button:focus { outline: 3px solid rgba(29,161,242,0.14); outline-offset: 2px; }
+
+.spotify-card { width: 448px; height: 128px; display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 12px; border-radius: 12px; background: linear-gradient(90deg, rgba(30,215,96,0.06), rgba(255,255,255,0.02)); box-sizing: border-box; overflow: hidden; }
+.spotify-album { width: 80px; height: 80px; border-radius: 8px; }
+.spotify-main { display:flex; flex-direction:column; }
+.spotify-header { display:flex; align-items:center; gap:8px; }
+.spotify-title { font-weight:700; color:#fff; font-family: 'Space Grotesk', sans-serif; }
+.spotify-artist { color:#cfcfcf; margin-top:6px; font-size:0.95rem }
+.spotify-live { margin-left:auto; background:#1db954; color:#fff; padding:6px 10px; border-radius:999px; font-size:0.8rem; display:flex; align-items:center; gap:6px; animation: pulse 1.8s infinite; }
+.spotify-progress { margin-top:10px; grid-column: 1 / span 3; }
+.spotify-progress-bar { height:10px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow:hidden; }
+.spotify-progress-fill { height:100%; background: linear-gradient(90deg, #1db954, #1ed760); width:0%; transition: width .5s ease; }
+.spotify-times { display:flex; justify-content:space-between; font-size:0.8rem; color:#bfbfbf; margin-top:6px; }
+
+@media (max-width: 768px) {
+  /* On smaller screens, allow cards to scale down to be usable */
+  .profile-card { width: calc(100% - 40px); height: auto; padding: 20px; }
+  .spotify-card { width: calc(100% - 40px); height: auto; grid-template-columns: auto 1fr; }
+  .avatar-img { width: 80px; height: 80px; }
+}
+
+@media (min-width: 768px) {
+  .avatar-img { width: 120px; height: 120px; }
+  .spotify-album { width: 96px; height: 96px; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.06); opacity: 0.85; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.card {
+    width: 320px;
+    padding: 20px;
+    background: #1e1e1e;
+    border-radius: 16px;
+
+    /* Suavidade do movimento */
+    transition: transform 0.35s cubic-bezier(.15,.8,.25,1),
+                box-shadow 0.35s cubic-bezier(.15,.8,.25,1);
+
+    transform-style: preserve-3d;
+    perspective: 1000px;
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.55);
+    position: relative;
+}
+
+/* ------- ÁREAS INVISÍVEIS PARA DETECTAR AS PONTAS ------- */
+
+.card .area-top,
+.card .area-bot,
+.card .area-esq,
+.card .area-dir {
+    position: absolute;
+    z-index: 2;
+}
+
+/* Topo */
+.card .area-top {
+    top: 0; left: 0;
+    width: 100%; height: 35%;
+}
+
+/* Base */
+.card .area-bot {
+    bottom: 0; left: 0;
+    width: 100%; height: 35%;
+}
+
+/* Esquerda */
+.card .area-esq {
+    top: 0; left: 0;
+    width: 35%; height: 100%;
+}
+
+/* Direita */
+.card .area-dir {
+    top: 0; right: 0;
+    width: 35%; height: 100%;
+}
+
+/* ------- ANIMAÇÃO TILT PADRÃO (CENTRO) ------- */
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 25px 40px rgba(0,0,0,0.6);
+    animation: tilt 0.15s ease-out forwards;
+}
+
+/* TILT central */
+@keyframes tilt {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-8px) scale(1.03); }
+}
+
+/* ------- TILT DIRECIONAL (PONTAS DO CARD) ------- */
+
+/* Entrou pelo topo */
+.card:hover:has(.area-top:hover) {
+    transform: rotateX(10deg) translateY(-4px) scale(1.03);
+}
+
+/* Entrou pela base */
+.card:hover:has(.area-bot:hover) {
+    transform: rotateX(-10deg) translateY(-4px) scale(1.03);
+}
+
+/* Entrou pela esquerda */
+.card:hover:has(.area-esq:hover) {
+    transform: rotateY(-12deg) translateY(-6px) scale(1.04);
+}
+
+/* Entrou pela direita */
+.card:hover:has(.area-dir:hover) {
+    transform: rotateY(12deg) translateY(-6px) scale(1.04);
+}
+
+/* Clique afunda */
+.card:active {
+    transform: scale(0.96) translateY(2px);
+}

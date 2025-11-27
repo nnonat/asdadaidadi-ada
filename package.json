@@ -1,0 +1,16 @@
+{
+  "name": "site-amigos",
+  "version": "1.0.0",
+  "description": "Site de amigos com integração Discord",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "node-fetch": "^2.7.0"
+  }
+}
